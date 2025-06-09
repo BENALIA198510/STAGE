@@ -31,7 +31,7 @@ const StudentsManagement: React.FC = () => {
   const paginatedStudents = useMemo(() => {
     const startIndex = (pagination.page - 1) * pagination.pageSize;
     const endIndex = startIndex + pagination.pageSize;
-    return filtere dStudents.slice(startIndex, endIndex);
+    return filteredStudents.slice(startIndex, endIndex);
   }, [filteredStudents, pagination.page, pagination.pageSize]);
 
   const totalPages = Math.ceil(filteredStudents.length / pagination.pageSize);
