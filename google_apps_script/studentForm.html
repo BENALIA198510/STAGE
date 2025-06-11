@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h2>Add Student</h2>
+    <form id="studentForm">
+      <label>Name: <input type="text" name="name" required></label><br><br>
+      <label>Email: <input type="email" name="email" required></label><br><br>
+      <label>Status: <input type="text" name="status" required></label><br><br>
+      <button type="submit">Add</button>
+    </form>
+
+    <script>
+      const form = document.getElementById('studentForm');
+      form.addEventListener('submit', e => {
+        e.preventDefault();
+        const student = Object.fromEntries(new FormData(form).entries());
+        google.script.run
+          .withSuccessHandler(() => form.reset())
+          .addStudent(student);
+      });
+    </script>
+  </body>
+</html>
