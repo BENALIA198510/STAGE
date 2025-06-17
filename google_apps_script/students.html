@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <h2>Students</h2>
+    <table border="1" id="studentsTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      function renderStudents(data) {
+        const tbody = document.getElementById('studentsTable').querySelector('tbody');
+        tbody.innerHTML = '';
+        data.forEach(row => {
+          const tr = document.createElement('tr');
+          row.forEach(col => {
+            const td = document.createElement('td');
+            td.textContent = col;
+            tr.appendChild(td);
+          });
+          tbody.appendChild(tr);
+        });
+      }
+
+      google.script.run.withSuccessHandler(renderStudents).getStudents();
+    </script>
+  </body>
+</html>
